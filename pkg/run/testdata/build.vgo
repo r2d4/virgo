@@ -1,0 +1,7 @@
+clean -> parser, lexer -> "go files" -> "go test"
+
+parser = `goyacc parser.y`
+lexer  = `golex lex.l`
+clean  = `rm lex.yy.go parser.go || true`
+"go test"   = `go test-v`
+"go build"  = `go build ./...`

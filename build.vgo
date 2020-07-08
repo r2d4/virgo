@@ -1,0 +1,9 @@
+generated_files -> parser, lexer -> go_build -> go_test
+
+clean -> generated_files
+
+parser      = `goyacc parser.y`
+lexer       = `golex lex.l`
+clean       = `rm lex.yy.go parser.go || true`
+go_test     = `go test-v`
+go_build    = `go build ./...`
