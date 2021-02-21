@@ -5,5 +5,5 @@ clean -> generated_files
 parser      = `goyacc parser.y`
 lexer       = `golex lex.l`
 clean       = `rm lex.yy.go parser.go || true`
-go_test     = `go test-v`
+go_test     = `go test -v`
 go_build    = `go build ./...`
