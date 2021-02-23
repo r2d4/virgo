@@ -2,13 +2,21 @@
 
 Most configuration problems reduce to graphs, e.g. Dockerfiles and Makefiles
 
-But there are no graph-based configuration languages. So I wrote a programming language that is.
+But there are no graph-based configuration languages. So virgo is an attempt to make a programming language that optimizes for natural graph readability, editability, and representation.
 
 Imagine dot language, but focused on config instead of presentation.
 
 ![Virgo Logo](images/virgolang.png)
 
 Virgo is a graph-based configuration language. It has two main features: edge definitions and vertex definitions. The Virgo configuration file then parses into an adjacency list. You can clearly achieve similar results from adding additional conventions and restrictions on YAML or JSON. Much like YAML optimized for human readability, Virgo optimizes for natural graph readability, editability, and representation.
+
+### Go
+
+This repository contains a reference implementation written in Go, with yacc and lex definitions.
+
+### Python
+
+There is a python implementation maintained at [jwg4/pyvirgo](https://github.com/jwg4/pyvirgo) which can also be found on [PyPi](https://pypi.org/project/pyvirgo/).
 
 ```go
 // config.vgo
