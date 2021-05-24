@@ -147,6 +147,33 @@ func TestParse(t *testing.T) {
 			},
 		},
 		{
+			desc: "node without edge",
+			in: `
+					a
+					`,
+			out: &v1.Graph{
+				Edges: map[string][]string{
+					"a": {},
+				},
+				Vertices: map[string][]string{},
+			},
+		},
+		{
+			desc: "nodes without edge",
+			in: `
+					a,b,c
+					a -> d
+					`,
+			out: &v1.Graph{
+				Edges: map[string][]string{
+					"a": {"d"},
+					"b": {},
+					"c": {},
+				},
+				Vertices: map[string][]string{},
+			},
+		},
+		{
 			desc: "7 edges one line",
 			in: `
 					a -> b -> c -> d -> e -> f -> g`,

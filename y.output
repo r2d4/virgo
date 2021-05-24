@@ -2,10 +2,10 @@ state 0 //
 
     0 $accept: . start
     9 edge_stmt: .  [$end, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   24 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   25 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     $end     reduce using rule 9 (edge_stmt)
-    EOF      reduce using rule 24 (stmt_start)
+    EOF      reduce using rule 25 (stmt_start)
     HASH     shift, and goto state 9
     LE_OP    reduce using rule 9 (edge_stmt)
     NEWLINE  shift, and goto state 12
@@ -23,13 +23,13 @@ state 0 //
     value           goto state 7
     vertex_stmt     goto state 4
 
-    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 24
-    conflict on LE_OP, reduce using rule 9, reduce using rule 24
-    conflict on NEWLINE, shift, and goto state 12, reduce using rule 9, reduce using rule 24
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 24
-    conflict on RE_OP, reduce using rule 9, reduce using rule 24
-    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 24
-    conflict on UE_OP, reduce using rule 9, reduce using rule 24
+    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 25
+    conflict on LE_OP, reduce using rule 9, reduce using rule 25
+    conflict on NEWLINE, shift, and goto state 12, reduce using rule 9, reduce using rule 25
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 25
+    conflict on RE_OP, reduce using rule 9, reduce using rule 25
+    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 25
+    conflict on UE_OP, reduce using rule 9, reduce using rule 25
 
 state 1 // [$end]
 
@@ -42,10 +42,10 @@ state 2 // [$end]
     1 start: stmt .  [$end]
     2 stmt: stmt . stmt
     9 edge_stmt: .  [$end, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   24 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   25 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     $end     reduce using rule 1 (start)
-    EOF      reduce using rule 24 (stmt_start)
+    EOF      reduce using rule 25 (stmt_start)
     HASH     shift, and goto state 9
     LE_OP    reduce using rule 9 (edge_stmt)
     NEWLINE  shift, and goto state 12
@@ -63,19 +63,19 @@ state 2 // [$end]
     vertex_stmt     goto state 4
 
     conflict on $end, reduce using rule 1, reduce using rule 9
-    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 24
-    conflict on LE_OP, reduce using rule 9, reduce using rule 24
-    conflict on NEWLINE, shift, and goto state 12, reduce using rule 9, reduce using rule 24
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 24
-    conflict on RE_OP, reduce using rule 9, reduce using rule 24
-    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 24
-    conflict on UE_OP, reduce using rule 9, reduce using rule 24
+    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 25
+    conflict on LE_OP, reduce using rule 9, reduce using rule 25
+    conflict on NEWLINE, shift, and goto state 12, reduce using rule 9, reduce using rule 25
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 25
+    conflict on RE_OP, reduce using rule 9, reduce using rule 25
+    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 25
+    conflict on UE_OP, reduce using rule 9, reduce using rule 25
 
 state 3 // [EOF]
 
     3 stmt: stmt_start . stmt stmt_end
     9 edge_stmt: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   24 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   25 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     EOF      reduce using rule 9 (edge_stmt)
     HASH     shift, and goto state 9
@@ -94,14 +94,14 @@ state 3 // [EOF]
     value           goto state 7
     vertex_stmt     goto state 4
 
-    conflict on EOF, reduce using rule 9, reduce using rule 24
-    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 24
-    conflict on LE_OP, reduce using rule 9, reduce using rule 24
-    conflict on NEWLINE, shift, and goto state 12, reduce using rule 9, reduce using rule 24
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 24
-    conflict on RE_OP, reduce using rule 9, reduce using rule 24
-    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 24
-    conflict on UE_OP, reduce using rule 9, reduce using rule 24
+    conflict on EOF, reduce using rule 9, reduce using rule 25
+    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 25
+    conflict on LE_OP, reduce using rule 9, reduce using rule 25
+    conflict on NEWLINE, shift, and goto state 12, reduce using rule 9, reduce using rule 25
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 25
+    conflict on RE_OP, reduce using rule 9, reduce using rule 25
+    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 25
+    conflict on UE_OP, reduce using rule 9, reduce using rule 25
 
 state 4 // QSTRING EQ BTICKSTR [$end]
 
@@ -152,28 +152,37 @@ state 6 // HASH STRING [$end]
     STRING   reduce using rule 6 (stmt)
     UE_OP    reduce using rule 6 (stmt)
 
-state 7 // QSTRING [COMMA]
+state 7 // QSTRING [$end]
 
     7 vertex_stmt: value . EQ BTICKSTR
     8 vertex_stmt: value . EQ value
-   18 node_name_list: value .  [COMMA, LE_OP, QSTRING, RE_OP, STRING, UE_OP]
+   19 node_name_list: value .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
-    COMMA    reduce using rule 18 (node_name_list)
+    $end     reduce using rule 19 (node_name_list)
+    COMMA    reduce using rule 19 (node_name_list)
+    EOF      reduce using rule 19 (node_name_list)
     EQ       shift, and goto state 28
-    LE_OP    reduce using rule 18 (node_name_list)
-    QSTRING  reduce using rule 18 (node_name_list)
-    RE_OP    reduce using rule 18 (node_name_list)
-    STRING   reduce using rule 18 (node_name_list)
-    UE_OP    reduce using rule 18 (node_name_list)
+    HASH     reduce using rule 19 (node_name_list)
+    LE_OP    reduce using rule 19 (node_name_list)
+    NEWLINE  reduce using rule 19 (node_name_list)
+    QSTRING  reduce using rule 19 (node_name_list)
+    RE_OP    reduce using rule 19 (node_name_list)
+    STRING   reduce using rule 19 (node_name_list)
+    UE_OP    reduce using rule 19 (node_name_list)
 
-state 8 // QSTRING [COMMA]
+state 8 // QSTRING [$end]
 
    10 edge_stmt: node_name_list . op node_name_list
-   16 node_name_list: node_name_list . node_name_list
-   17 node_name_list: node_name_list . COMMA value
+   12 edge_stmt: node_name_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   17 node_name_list: node_name_list . node_name_list
+   18 node_name_list: node_name_list . COMMA value
 
+    $end     reduce using rule 12 (edge_stmt)
     COMMA    shift, and goto state 21
+    EOF      reduce using rule 12 (edge_stmt)
+    HASH     reduce using rule 12 (edge_stmt)
     LE_OP    shift, and goto state 24
+    NEWLINE  reduce using rule 12 (edge_stmt)
     QSTRING  shift, and goto state 11
     RE_OP    shift, and goto state 23
     STRING   shift, and goto state 10
@@ -183,32 +192,22 @@ state 8 // QSTRING [COMMA]
     op              goto state 19
     value           goto state 22
 
+    conflict on LE_OP, shift, and goto state 24, reduce using rule 12
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 12
+    conflict on RE_OP, shift, and goto state 23, reduce using rule 12
+    conflict on STRING, shift, and goto state 10, reduce using rule 12
+    conflict on UE_OP, shift, and goto state 25, reduce using rule 12
+
 state 9 // HASH
 
-   12 directive_stmt: HASH . STRING kv_list
-   13 directive_stmt: HASH . STRING
+   13 directive_stmt: HASH . STRING kv_list
+   14 directive_stmt: HASH . STRING
 
     STRING  shift, and goto state 13
 
 state 10 // STRING
 
-   19 value: STRING .  [$end, COMMA, EOF, EQ, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-
-    $end     reduce using rule 19 (value)
-    COMMA    reduce using rule 19 (value)
-    EOF      reduce using rule 19 (value)
-    EQ       reduce using rule 19 (value)
-    HASH     reduce using rule 19 (value)
-    LE_OP    reduce using rule 19 (value)
-    NEWLINE  reduce using rule 19 (value)
-    QSTRING  reduce using rule 19 (value)
-    RE_OP    reduce using rule 19 (value)
-    STRING   reduce using rule 19 (value)
-    UE_OP    reduce using rule 19 (value)
-
-state 11 // QSTRING
-
-   20 value: QSTRING .  [$end, COMMA, EOF, EQ, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   20 value: STRING .  [$end, COMMA, EOF, EQ, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     $end     reduce using rule 20 (value)
     COMMA    reduce using rule 20 (value)
@@ -222,23 +221,60 @@ state 11 // QSTRING
     STRING   reduce using rule 20 (value)
     UE_OP    reduce using rule 20 (value)
 
+state 11 // QSTRING
+
+   21 value: QSTRING .  [$end, COMMA, EOF, EQ, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+
+    $end     reduce using rule 21 (value)
+    COMMA    reduce using rule 21 (value)
+    EOF      reduce using rule 21 (value)
+    EQ       reduce using rule 21 (value)
+    HASH     reduce using rule 21 (value)
+    LE_OP    reduce using rule 21 (value)
+    NEWLINE  reduce using rule 21 (value)
+    QSTRING  reduce using rule 21 (value)
+    RE_OP    reduce using rule 21 (value)
+    STRING   reduce using rule 21 (value)
+    UE_OP    reduce using rule 21 (value)
+
 state 12 // NEWLINE
 
-   25 stmt_start: NEWLINE .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   26 stmt_start: NEWLINE .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
-    EOF      reduce using rule 25 (stmt_start)
-    HASH     reduce using rule 25 (stmt_start)
-    LE_OP    reduce using rule 25 (stmt_start)
-    NEWLINE  reduce using rule 25 (stmt_start)
-    QSTRING  reduce using rule 25 (stmt_start)
-    RE_OP    reduce using rule 25 (stmt_start)
-    STRING   reduce using rule 25 (stmt_start)
-    UE_OP    reduce using rule 25 (stmt_start)
+    EOF      reduce using rule 26 (stmt_start)
+    HASH     reduce using rule 26 (stmt_start)
+    LE_OP    reduce using rule 26 (stmt_start)
+    NEWLINE  reduce using rule 26 (stmt_start)
+    QSTRING  reduce using rule 26 (stmt_start)
+    RE_OP    reduce using rule 26 (stmt_start)
+    STRING   reduce using rule 26 (stmt_start)
+    UE_OP    reduce using rule 26 (stmt_start)
 
 state 13 // HASH STRING
 
-   12 directive_stmt: HASH STRING . kv_list
-   13 directive_stmt: HASH STRING .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   13 directive_stmt: HASH STRING . kv_list
+   14 directive_stmt: HASH STRING .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+
+    $end     reduce using rule 14 (directive_stmt)
+    EOF      reduce using rule 14 (directive_stmt)
+    HASH     reduce using rule 14 (directive_stmt)
+    LE_OP    reduce using rule 14 (directive_stmt)
+    NEWLINE  reduce using rule 14 (directive_stmt)
+    QSTRING  shift, and goto state 11
+    RE_OP    reduce using rule 14 (directive_stmt)
+    STRING   shift, and goto state 10
+    UE_OP    reduce using rule 14 (directive_stmt)
+
+    kv_list  goto state 14
+    value    goto state 15
+
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 14
+    conflict on STRING, shift, and goto state 10, reduce using rule 14
+
+state 14 // HASH STRING QSTRING EQ QSTRING [$end]
+
+   13 directive_stmt: HASH STRING kv_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   15 kv_list: kv_list . kv_list
 
     $end     reduce using rule 13 (directive_stmt)
     EOF      reduce using rule 13 (directive_stmt)
@@ -250,42 +286,21 @@ state 13 // HASH STRING
     STRING   shift, and goto state 10
     UE_OP    reduce using rule 13 (directive_stmt)
 
-    kv_list  goto state 14
+    kv_list  goto state 18
     value    goto state 15
 
     conflict on QSTRING, shift, and goto state 11, reduce using rule 13
     conflict on STRING, shift, and goto state 10, reduce using rule 13
 
-state 14 // HASH STRING QSTRING EQ QSTRING [$end]
-
-   12 directive_stmt: HASH STRING kv_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   14 kv_list: kv_list . kv_list
-
-    $end     reduce using rule 12 (directive_stmt)
-    EOF      reduce using rule 12 (directive_stmt)
-    HASH     reduce using rule 12 (directive_stmt)
-    LE_OP    reduce using rule 12 (directive_stmt)
-    NEWLINE  reduce using rule 12 (directive_stmt)
-    QSTRING  shift, and goto state 11
-    RE_OP    reduce using rule 12 (directive_stmt)
-    STRING   shift, and goto state 10
-    UE_OP    reduce using rule 12 (directive_stmt)
-
-    kv_list  goto state 18
-    value    goto state 15
-
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 12
-    conflict on STRING, shift, and goto state 10, reduce using rule 12
-
 state 15 // HASH STRING QSTRING [EQ]
 
-   15 kv_list: value . EQ value
+   16 kv_list: value . EQ value
 
     EQ  shift, and goto state 16
 
 state 16 // HASH STRING QSTRING EQ
 
-   15 kv_list: value EQ . value
+   16 kv_list: value EQ . value
 
     QSTRING  shift, and goto state 11
     STRING   shift, and goto state 10
@@ -294,38 +309,38 @@ state 16 // HASH STRING QSTRING EQ
 
 state 17 // HASH STRING QSTRING EQ QSTRING [$end]
 
-   15 kv_list: value EQ value .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   16 kv_list: value EQ value .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+
+    $end     reduce using rule 16 (kv_list)
+    EOF      reduce using rule 16 (kv_list)
+    HASH     reduce using rule 16 (kv_list)
+    LE_OP    reduce using rule 16 (kv_list)
+    NEWLINE  reduce using rule 16 (kv_list)
+    QSTRING  reduce using rule 16 (kv_list)
+    RE_OP    reduce using rule 16 (kv_list)
+    STRING   reduce using rule 16 (kv_list)
+    UE_OP    reduce using rule 16 (kv_list)
+
+state 18 // HASH STRING QSTRING EQ QSTRING QSTRING EQ QSTRING [$end]
+
+   15 kv_list: kv_list . kv_list
+   15 kv_list: kv_list kv_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     $end     reduce using rule 15 (kv_list)
     EOF      reduce using rule 15 (kv_list)
     HASH     reduce using rule 15 (kv_list)
     LE_OP    reduce using rule 15 (kv_list)
     NEWLINE  reduce using rule 15 (kv_list)
-    QSTRING  reduce using rule 15 (kv_list)
-    RE_OP    reduce using rule 15 (kv_list)
-    STRING   reduce using rule 15 (kv_list)
-    UE_OP    reduce using rule 15 (kv_list)
-
-state 18 // HASH STRING QSTRING EQ QSTRING QSTRING EQ QSTRING [$end]
-
-   14 kv_list: kv_list . kv_list
-   14 kv_list: kv_list kv_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-
-    $end     reduce using rule 14 (kv_list)
-    EOF      reduce using rule 14 (kv_list)
-    HASH     reduce using rule 14 (kv_list)
-    LE_OP    reduce using rule 14 (kv_list)
-    NEWLINE  reduce using rule 14 (kv_list)
     QSTRING  shift, and goto state 11
-    RE_OP    reduce using rule 14 (kv_list)
+    RE_OP    reduce using rule 15 (kv_list)
     STRING   shift, and goto state 10
-    UE_OP    reduce using rule 14 (kv_list)
+    UE_OP    reduce using rule 15 (kv_list)
 
     kv_list  goto state 18
     value    goto state 15
 
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 14
-    conflict on STRING, shift, and goto state 10, reduce using rule 14
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 15
+    conflict on STRING, shift, and goto state 10, reduce using rule 15
 
 state 19 // QSTRING LE_OP [QSTRING]
 
@@ -339,31 +354,31 @@ state 19 // QSTRING LE_OP [QSTRING]
 
 state 20 // QSTRING QSTRING [$end]
 
-   16 node_name_list: node_name_list . node_name_list
-   16 node_name_list: node_name_list node_name_list .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   17 node_name_list: node_name_list . COMMA value
+   17 node_name_list: node_name_list . node_name_list
+   17 node_name_list: node_name_list node_name_list .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   18 node_name_list: node_name_list . COMMA value
 
-    $end     reduce using rule 16 (node_name_list)
+    $end     reduce using rule 17 (node_name_list)
     COMMA    shift, and goto state 21
-    EOF      reduce using rule 16 (node_name_list)
-    HASH     reduce using rule 16 (node_name_list)
-    LE_OP    reduce using rule 16 (node_name_list)
-    NEWLINE  reduce using rule 16 (node_name_list)
+    EOF      reduce using rule 17 (node_name_list)
+    HASH     reduce using rule 17 (node_name_list)
+    LE_OP    reduce using rule 17 (node_name_list)
+    NEWLINE  reduce using rule 17 (node_name_list)
     QSTRING  shift, and goto state 11
-    RE_OP    reduce using rule 16 (node_name_list)
+    RE_OP    reduce using rule 17 (node_name_list)
     STRING   shift, and goto state 10
-    UE_OP    reduce using rule 16 (node_name_list)
+    UE_OP    reduce using rule 17 (node_name_list)
 
     node_name_list  goto state 20
     value           goto state 22
 
-    conflict on COMMA, shift, and goto state 21, reduce using rule 16
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 16
-    conflict on STRING, shift, and goto state 10, reduce using rule 16
+    conflict on COMMA, shift, and goto state 21, reduce using rule 17
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 17
+    conflict on STRING, shift, and goto state 10, reduce using rule 17
 
 state 21 // QSTRING COMMA
 
-   17 node_name_list: node_name_list COMMA . value
+   18 node_name_list: node_name_list COMMA . value
 
     QSTRING  shift, and goto state 11
     STRING   shift, and goto state 10
@@ -372,7 +387,43 @@ state 21 // QSTRING COMMA
 
 state 22 // QSTRING QSTRING [$end]
 
-   18 node_name_list: value .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   19 node_name_list: value .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+
+    $end     reduce using rule 19 (node_name_list)
+    COMMA    reduce using rule 19 (node_name_list)
+    EOF      reduce using rule 19 (node_name_list)
+    HASH     reduce using rule 19 (node_name_list)
+    LE_OP    reduce using rule 19 (node_name_list)
+    NEWLINE  reduce using rule 19 (node_name_list)
+    QSTRING  reduce using rule 19 (node_name_list)
+    RE_OP    reduce using rule 19 (node_name_list)
+    STRING   reduce using rule 19 (node_name_list)
+    UE_OP    reduce using rule 19 (node_name_list)
+
+state 23 // RE_OP
+
+   22 op: RE_OP .  [QSTRING, STRING]
+
+    QSTRING  reduce using rule 22 (op)
+    STRING   reduce using rule 22 (op)
+
+state 24 // LE_OP
+
+   23 op: LE_OP .  [QSTRING, STRING]
+
+    QSTRING  reduce using rule 23 (op)
+    STRING   reduce using rule 23 (op)
+
+state 25 // UE_OP
+
+   24 op: UE_OP .  [QSTRING, STRING]
+
+    QSTRING  reduce using rule 24 (op)
+    STRING   reduce using rule 24 (op)
+
+state 26 // QSTRING COMMA QSTRING [$end]
+
+   18 node_name_list: node_name_list COMMA value .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     $end     reduce using rule 18 (node_name_list)
     COMMA    reduce using rule 18 (node_name_list)
@@ -385,47 +436,11 @@ state 22 // QSTRING QSTRING [$end]
     STRING   reduce using rule 18 (node_name_list)
     UE_OP    reduce using rule 18 (node_name_list)
 
-state 23 // RE_OP
-
-   21 op: RE_OP .  [QSTRING, STRING]
-
-    QSTRING  reduce using rule 21 (op)
-    STRING   reduce using rule 21 (op)
-
-state 24 // LE_OP
-
-   22 op: LE_OP .  [QSTRING, STRING]
-
-    QSTRING  reduce using rule 22 (op)
-    STRING   reduce using rule 22 (op)
-
-state 25 // UE_OP
-
-   23 op: UE_OP .  [QSTRING, STRING]
-
-    QSTRING  reduce using rule 23 (op)
-    STRING   reduce using rule 23 (op)
-
-state 26 // QSTRING COMMA QSTRING [$end]
-
-   17 node_name_list: node_name_list COMMA value .  [$end, COMMA, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-
-    $end     reduce using rule 17 (node_name_list)
-    COMMA    reduce using rule 17 (node_name_list)
-    EOF      reduce using rule 17 (node_name_list)
-    HASH     reduce using rule 17 (node_name_list)
-    LE_OP    reduce using rule 17 (node_name_list)
-    NEWLINE  reduce using rule 17 (node_name_list)
-    QSTRING  reduce using rule 17 (node_name_list)
-    RE_OP    reduce using rule 17 (node_name_list)
-    STRING   reduce using rule 17 (node_name_list)
-    UE_OP    reduce using rule 17 (node_name_list)
-
 state 27 // QSTRING LE_OP QSTRING [$end]
 
    10 edge_stmt: node_name_list op node_name_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   16 node_name_list: node_name_list . node_name_list
-   17 node_name_list: node_name_list . COMMA value
+   17 node_name_list: node_name_list . node_name_list
+   18 node_name_list: node_name_list . COMMA value
 
     $end     reduce using rule 10 (edge_stmt)
     COMMA    shift, and goto state 21
@@ -496,8 +511,8 @@ state 31 // LE_OP [QSTRING]
 state 32 // LE_OP QSTRING [$end]
 
    11 edge_stmt: edge_stmt op node_name_list .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   16 node_name_list: node_name_list . node_name_list
-   17 node_name_list: node_name_list . COMMA value
+   17 node_name_list: node_name_list . node_name_list
+   18 node_name_list: node_name_list . COMMA value
 
     $end     reduce using rule 11 (edge_stmt)
     COMMA    shift, and goto state 21
@@ -521,7 +536,7 @@ state 33 // [EOF]
     2 stmt: stmt . stmt
     3 stmt: stmt_start stmt . stmt_end
     9 edge_stmt: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   24 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   25 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     EOF      shift, and goto state 37
     HASH     shift, and goto state 9
@@ -541,21 +556,21 @@ state 33 // [EOF]
     value           goto state 7
     vertex_stmt     goto state 4
 
-    conflict on EOF, shift, and goto state 37, reduce using rule 9, reduce using rule 24
-    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 24
-    conflict on LE_OP, reduce using rule 9, reduce using rule 24
-    conflict on NEWLINE, shift, and goto state 36, reduce using rule 9, reduce using rule 24
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 24
-    conflict on RE_OP, reduce using rule 9, reduce using rule 24
-    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 24
-    conflict on UE_OP, reduce using rule 9, reduce using rule 24
+    conflict on EOF, shift, and goto state 37, reduce using rule 9, reduce using rule 25
+    conflict on HASH, shift, and goto state 9, reduce using rule 9, reduce using rule 25
+    conflict on LE_OP, reduce using rule 9, reduce using rule 25
+    conflict on NEWLINE, shift, and goto state 36, reduce using rule 9, reduce using rule 25
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 9, reduce using rule 25
+    conflict on RE_OP, reduce using rule 9, reduce using rule 25
+    conflict on STRING, shift, and goto state 10, reduce using rule 9, reduce using rule 25
+    conflict on UE_OP, reduce using rule 9, reduce using rule 25
 
 state 34 //
 
     2 stmt: stmt . stmt
     2 stmt: stmt stmt .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
     9 edge_stmt: .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   24 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   25 stmt_start: .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
     $end     reduce using rule 2 (stmt)
     EOF      reduce using rule 2 (stmt)
@@ -576,14 +591,14 @@ state 34 //
     vertex_stmt     goto state 4
 
     conflict on $end, reduce using rule 2, reduce using rule 9
-    conflict on EOF, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on HASH, shift, and goto state 9, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on LE_OP, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on NEWLINE, shift, and goto state 12, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on QSTRING, shift, and goto state 11, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on RE_OP, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on STRING, shift, and goto state 10, reduce using rule 2, reduce using rule 9, reduce using rule 24
-    conflict on UE_OP, reduce using rule 2, reduce using rule 9, reduce using rule 24
+    conflict on EOF, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on HASH, shift, and goto state 9, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on LE_OP, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on NEWLINE, shift, and goto state 12, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on QSTRING, shift, and goto state 11, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on RE_OP, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on STRING, shift, and goto state 10, reduce using rule 2, reduce using rule 9, reduce using rule 25
+    conflict on UE_OP, reduce using rule 2, reduce using rule 9, reduce using rule 25
 
 state 35 // EOF [$end]
 
@@ -601,38 +616,38 @@ state 35 // EOF [$end]
 
 state 36 // NEWLINE
 
-   25 stmt_start: NEWLINE .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
-   26 stmt_end: NEWLINE .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   26 stmt_start: NEWLINE .  [EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   27 stmt_end: NEWLINE .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
-    $end     reduce using rule 26 (stmt_end)
-    EOF      reduce using rule 25 (stmt_start)
-    HASH     reduce using rule 25 (stmt_start)
-    LE_OP    reduce using rule 25 (stmt_start)
-    NEWLINE  reduce using rule 25 (stmt_start)
-    QSTRING  reduce using rule 25 (stmt_start)
-    RE_OP    reduce using rule 25 (stmt_start)
-    STRING   reduce using rule 25 (stmt_start)
-    UE_OP    reduce using rule 25 (stmt_start)
-    conflict on EOF, reduce using rule 25, reduce using rule 26
-    conflict on HASH, reduce using rule 25, reduce using rule 26
-    conflict on LE_OP, reduce using rule 25, reduce using rule 26
-    conflict on NEWLINE, reduce using rule 25, reduce using rule 26
-    conflict on QSTRING, reduce using rule 25, reduce using rule 26
-    conflict on RE_OP, reduce using rule 25, reduce using rule 26
-    conflict on STRING, reduce using rule 25, reduce using rule 26
-    conflict on UE_OP, reduce using rule 25, reduce using rule 26
+    $end     reduce using rule 27 (stmt_end)
+    EOF      reduce using rule 26 (stmt_start)
+    HASH     reduce using rule 26 (stmt_start)
+    LE_OP    reduce using rule 26 (stmt_start)
+    NEWLINE  reduce using rule 26 (stmt_start)
+    QSTRING  reduce using rule 26 (stmt_start)
+    RE_OP    reduce using rule 26 (stmt_start)
+    STRING   reduce using rule 26 (stmt_start)
+    UE_OP    reduce using rule 26 (stmt_start)
+    conflict on EOF, reduce using rule 26, reduce using rule 27
+    conflict on HASH, reduce using rule 26, reduce using rule 27
+    conflict on LE_OP, reduce using rule 26, reduce using rule 27
+    conflict on NEWLINE, reduce using rule 26, reduce using rule 27
+    conflict on QSTRING, reduce using rule 26, reduce using rule 27
+    conflict on RE_OP, reduce using rule 26, reduce using rule 27
+    conflict on STRING, reduce using rule 26, reduce using rule 27
+    conflict on UE_OP, reduce using rule 26, reduce using rule 27
 
 state 37 // EOF
 
-   27 stmt_end: EOF .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
+   28 stmt_end: EOF .  [$end, EOF, HASH, LE_OP, NEWLINE, QSTRING, RE_OP, STRING, UE_OP]
 
-    $end     reduce using rule 27 (stmt_end)
-    EOF      reduce using rule 27 (stmt_end)
-    HASH     reduce using rule 27 (stmt_end)
-    LE_OP    reduce using rule 27 (stmt_end)
-    NEWLINE  reduce using rule 27 (stmt_end)
-    QSTRING  reduce using rule 27 (stmt_end)
-    RE_OP    reduce using rule 27 (stmt_end)
-    STRING   reduce using rule 27 (stmt_end)
-    UE_OP    reduce using rule 27 (stmt_end)
+    $end     reduce using rule 28 (stmt_end)
+    EOF      reduce using rule 28 (stmt_end)
+    HASH     reduce using rule 28 (stmt_end)
+    LE_OP    reduce using rule 28 (stmt_end)
+    NEWLINE  reduce using rule 28 (stmt_end)
+    QSTRING  reduce using rule 28 (stmt_end)
+    RE_OP    reduce using rule 28 (stmt_end)
+    STRING   reduce using rule 28 (stmt_end)
+    UE_OP    reduce using rule 28 (stmt_end)
 

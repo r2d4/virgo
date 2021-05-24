@@ -73,6 +73,11 @@ edge_stmt: {}
     $$ = v1.EdgeStmt{LHS:$1.RHS, Op: $2, RHS:$3}
     yylex.(*lexer).AddEdges($$.Op, $1.RHS, $3)
   }
+  | node_name_list
+  {
+    $$ = v1.EdgeStmt{LHS:$1}
+    yylex.(*lexer).AddEdges("--", $1, nil)
+  }
   ;
 
 directive_stmt: HASH STRING kv_list
