@@ -216,8 +216,8 @@ func TestParse(t *testing.T) {
 					{
 						Name: "directive_2",
 						Args: []v1.KV{
-							{"arg", "value"},
-							{"arg2", "value2"},
+							{Key: "arg", Value: "value"},
+							{Key: "arg2", Value: "value2"},
 						},
 					},
 				},

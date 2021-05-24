@@ -1,5 +1,7 @@
+#!/bin/bash
+
 scripts=(
-    # "scripts/linter.sh"
+    "scripts/linter.sh"
 )
 
 set -e
